@@ -1,0 +1,28 @@
+<h3>Comments:</h3>
+<hr>
+  <% if @post.comments %>
+    <% @post.comments.each do |comment| %>
+        <div id="comment">
+            <div class="user-name">
+              <%= comment.user.user_name %> :
+            </div>
+            <div class="comment-content">
+              <%= comment.content %>
+            </div>
+            <% if comment.user == current_user %>
+              <%= link_to "Delete", post_comment_path(@post, comment),class: "glyphicon glyphicon-remove delete-comment", method: :delete, data: { confirm: "Are you sure?" } %>
+            <% end %>
+        
+        <hr>
+    <% end %>
+  <% end %>
+        <div class="comment-like-form row">
+          <div class="comment-form col-sm-11">
+              <%= form_for [@post, @post.comments.new] do |f| %>
+                <%= f.text_area :content, placeholder: 'Add a comment...', autofocus: true, class: "form-control" %>
+                <%= f.submit class: 'btn btn-success'  %>
+              <% end %>  
+          </div> 
+        </div>
+        </div>
+  </br>

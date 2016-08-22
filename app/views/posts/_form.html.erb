@@ -1,0 +1,7 @@
+<div class="container">
+<%= simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
+<%= f.input :image, label: "Choose your image: No files exept images are allowed", class: "form-group" %>
+<%= f.input :caption, placeholder: 'Describe your image', class: " form-group text-center" %>
+<%= f.button :submit, class: 'btn-success' %>
+<% end %>
+</div>

@@ -1,0 +1,29 @@
+<div class='posts-wrapper row'>
+  <div class='post'>
+    <div class='image center-block'>
+      <%=link_to (image_tag @post.image.url(:medium), class:'img-responsive'), posts_path%>
+    </div>
+    <div class="post-bottom">
+      <p class='caption'><a>About image:</a> <%= @post.caption %></p>
+      <p class="post-head">Added by <%= @post.user.user_name unless @post.user.blank?%></p>
+     
+    </div>
+    <div class='text-center right'>
+   <%= link_to "Cancel", posts_path, class: 'btn btn-success' %>
+   <% if @post.user.id == current_user.id %>
+   |
+  <%= link_to "Edit Post", edit_post_path(@post), class: 'btn btn-primary' %>
+  |
+  <%= link_to "Delete Post", post_path(@post), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure you want to delete this Photo?", disable_with: 'loading...' } %>
+  <% else %>
+  <% end %>
+    </div>
+
+
+  </div>
+ <!-- Comment -->
+<%= render 'post' %>
+<!-- End comment -->
+
+</div>
+

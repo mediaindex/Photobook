@@ -1,0 +1,37 @@
+
+<h1>PhotoBook</h1>
+  <div class="container">
+<% @posts.each do |post| %>
+  <div class="row-image">
+  <div class="col-xs-6 col-md-3">
+    <a href="<%= post_path(post) %>" class="thumbnail">
+      <img src="<%= post.image.url(:medium) %>" alt="<%= post.caption %>">
+    </a>
+      <div class="caption">
+  <p><%= post.caption %></p>
+  </div>
+  </div>
+</div>
+<% end %>
+</div>
+
+  <!-- page pagination -->
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
